@@ -1,0 +1,86 @@
+.container {
+    display: flex;
+  }
+  
+  .column1 {
+    flex: 4;
+    background: linear-gradient(135deg, #1058C7, #0F58C9);
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    overflow-y : auto
+  }
+  
+  .column2 {
+    flex: 8;
+    background-color: #FFFFFF;
+    padding: 35px 100px 20px 100px;
+  
+  }
+  
+  .fileImg {
+    width: 25%;
+  }
+  
+  .columnContent {
+    margin-top: 80px;
+  }
+  
+  .logo {
+    width: 18%;
+    
+  }
+  
+  .secondColumnInfo {
+    text-align: center;
+  }
+  
+  .tableElement {
+    margin-top: 20px;
+  }
+  
+  .tableStriped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .reservedTitle {
+    color: #b4152f;
+  }
+  
+  .reservedSection {
+    margin-top: 80px;
+  }
+  
+
+
+  
+
+  
+  .table {
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    color: #212529;
+    margin-top: 25px;
+  }
+  
+  .table th, 
+  .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+  }
+  
+  .table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+  }
+.submitButtons{
+  margin-top: 20px;
+}
