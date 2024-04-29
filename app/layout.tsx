@@ -6,8 +6,7 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "/node_modules/primeflex/primeflex.css";
 import { PrimeReactProvider } from "primereact/api";
-import Providers from "@/components/providers/Providers";
-import NavBar from "@/components/navbar/navbar";
+
 import AuthenticatedGuard from "@/components/authguard/AuthenticatedGuard";
 
 const inter = Inter({ subsets: ["latin"] });
