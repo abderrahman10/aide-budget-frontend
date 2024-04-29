@@ -1,6 +1,6 @@
 
 import AuthenticatedGuard from "@/components/authguard/AuthenticatedGuard"
-import { UserOauth2Info } from "../user-oauth2-info/UserOauth2Info"
+import { UserOauth2Info } from "../UserOauth2Info"
 
 export default async function ProtectedPage() {
 

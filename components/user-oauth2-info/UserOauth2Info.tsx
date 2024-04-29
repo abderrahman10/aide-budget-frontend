@@ -5,7 +5,7 @@ export async function UserOauth2Info() {
     const JSSESSION = cookieStore.get('JSESSIONID')
 
     try {
-        const userInfoResponse = await fetch('http://localhost:8081/api/v1/participants/me', {
+        const userInfoResponse = await fetch('http://localhost:8081/api/v1/participants/admin/user-info', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

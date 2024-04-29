@@ -74,7 +74,7 @@ export default function Consentements() {
           </div>
           <div className="submitButtons" >
           <UploadFile/>
-          <br />
+    
           <RelanceCsv/>
          </div>
           

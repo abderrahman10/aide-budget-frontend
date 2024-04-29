@@ -12,7 +12,7 @@ const RelanceCsv = () => {
   const generateCsvHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const url = "http://localhost:8081/api/v1/participants/download";
+      const url = "http://localhost:8081/api/v1/participants/admin/csv/download";
       await downloadFile(url);
       toast.current?.show({
         severity: "success",

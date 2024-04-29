@@ -7,6 +7,7 @@ import { FileUpload } from 'primereact/fileupload';
 import classes from "./UploadFile.module.css";
 import React from 'react'
 import { parseCookies } from 'nookies';
+
  const UploadFile = () => {
   const cookies = parseCookies();
   const JSSESSION = cookies.JSESSIONID;
@@ -26,7 +27,7 @@ import { parseCookies } from 'nookies';
 
       try {
         const response = await fetch(
-          "http://localhost:8081/api/v1/participants/upload",
+          "http://localhost:8081/api/v1/participants/admin/csv/upload",
           {
             method: "POST",
             body: formData,
@@ -35,7 +36,8 @@ import { parseCookies } from 'nookies';
             },
             credentials: "include",
           }
-        );
+          
+        );console.log("this is the data ",response)
         if (!response.ok) {
           const responseData = await response.json();
           const errorMessage = responseData.message;
@@ -73,6 +75,7 @@ import { parseCookies } from 'nookies';
         <Toast ref={toast} />
         <div className="card flex flex-wrap justify-content-center">
           <FileUpload name="file" multiple onSelect={(e) => setSelectedFiles(e.files)} accept=".csv" emptyTemplate={<p className="m-0">Drag and drop files to here to upload.</p>} />
+          
         </div>
         <div className={classes.submitButton}>
             <Button label="Importer" type="submit" />

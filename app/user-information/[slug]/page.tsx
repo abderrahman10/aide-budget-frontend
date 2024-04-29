@@ -3,7 +3,10 @@ import classes from "./page.module.css";
 import logo from "@/assets/files.png";
 import logo2 from "@/assets/logo.png";
 import { Button } from "primereact/button";
+import Link from "next/link";
 
+import 'primeicons/primeicons.css';
+        
 export default function UserInformation() {
  
   return (
@@ -91,8 +94,16 @@ export default function UserInformation() {
             </h2>
 
             <div className="card flex flex-wrap justify-content-center gap-2">
+            <Link href="/user-consentement">
               <Button label="Submit" type="submit"  />
+              </Link>
             </div>
+            <p><strong>Aide-Budget, c est quoi ?</strong> Le gouvernement a lancé le 27 février 2023 une nouvelle initiative nommée
+             Aide-Budget qui associe, dans une démarche commune de prévention du surendettement, pouvoirs publics,
+             fournisseurs d énergie, fédérations de bailleurs sociaux et le réseau des Points Conseil Budget.
+              Cette expérimentation, menée durant douze mois sur onze départements en métropole et en Outre-mer, 
+              a pour objectif de repérer en amont les signaux de surendettement des ménages afin de leur proposer 
+              un accompagnement personnalisé</p>
           </div>
         </div>
       </div>
