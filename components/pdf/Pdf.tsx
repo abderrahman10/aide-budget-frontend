@@ -4,11 +4,7 @@ import { useState } from 'react';
         
 const Pdf = () => {
   const [pdfUrl, setPdfUrl] = useState('');
-  const jsonData = [
-    { key1: 'value1' },
-    { key2: 'value2' },
-    // Ajoutez les données JSON nécessaires ici
-  ];
+
   async function GeneratePdf(){
     try {
       const response = await fetch('http://localhost:8081/api/v1/participants/pdf/generate', {
@@ -16,7 +12,6 @@ const Pdf = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(jsonData),
       });
 
       if (!response.ok) {
@@ -35,6 +30,7 @@ const Pdf = () => {
     if (pdfUrl === '') {
       GeneratePdf();
     }
+    //eslint-disable-next-line
   }, []);
   return (
     <div>

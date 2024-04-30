@@ -1,14 +1,44 @@
+"use client";
 import Image from "next/image";
 import classes from "./page.module.css";
 import logo from "@/assets/files.png";
 import logo2 from "@/assets/logo.png";
 import { Button } from "primereact/button";
 import Link from "next/link";
+import "primeicons/primeicons.css";
+import UserTable from "@/components/user-table/UserTable";
 
-import 'primeicons/primeicons.css';
-        
-export default function UserInformation() {
- 
+import React, {useEffect, useState } from "react";
+
+export default function UserInformation({  params,}: {  params: { slug: string };}) {
+  const [userData, setUserData] = useState<any>(null);
+
+  const { slug } = params;
+  
+  useEffect(() => {
+    
+    getUserByToken();
+    //eslint-disable-next-line
+  }, []);
+
+  async function getUserByToken() {
+    try {
+      const response = await fetch(
+        `http://localhost:8081/api/v1/participants/find/${slug}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Erreur lors de la récupération du participant");
+      }
+
+      const data = await response.json();
+      // Faire quelque chose avec les données récupérées, par exemple, mettre à jour l'état du composant avec les données du participant
+      console.log(data);
+      setUserData(data);
+    } catch (error) {
+      console.error("Erreur:", error);
+    }
+  }
   return (
     <div className={classes.container}>
       <div className={classes.column1}>
@@ -32,59 +62,7 @@ export default function UserInformation() {
           className={classes.logo}
         />
         <div className={classes.secondColumnInfo}>
-          <p>
-            Dans le cadre de l initiative Aide-Budget, je vous ai proposé un
-            accompagnement personnalisé pour vos impayés d énergie. Le recueil
-            de votre consentement est nécessaire pour que je puisse transmettre
-            vos coordonnées au Point Conseil Budget qui va prendre contact avec
-            vous. <br />
-            <br />
-            À très bientôt, <br /> <br />
-            Votre conseiller Solidarité EDF
-          </p>
-          <div className={classes.tableElement}>
-            <table className={classes.tableStriped}>
-              <thead>
-                <tr>
-                  <th colSpan={2}>Vos informations personnelles</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className={classes.td1}>Civilité</td>
-                  <td className={classes.td2}>Monsieur</td>
-                </tr>
-                <tr>
-                  <td className={classes.td1}>
-                   
-                    <b>Nom</b>
-                  </td>
-                  <td className={classes.td2}> aaa</td>
-                </tr>
-                <tr>
-                  <td className={classes.td1}>
-                   
-                    <b>Prénom</b>
-                  </td>
-                  <td className={classes.td2}> aaa</td>
-                </tr>
-                <tr>
-                  <td className={classes.td1}>
-                    
-                    <b>Email</b>
-                  </td>
-                  <td className={classes.td2}> aaa@gmail.com</td>
-                </tr>
-                <tr>
-                  <td className={classes.td1}>
-               
-                    <b>Téléphone</b>
-                  </td>
-                  <td className={classes.td2}> 066666</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          {userData && <UserTable userData={userData} />}
 
           <div className={classes.importSection}>
             <h2>
@@ -94,16 +72,21 @@ export default function UserInformation() {
             </h2>
 
             <div className="card flex flex-wrap justify-content-center gap-2">
-            <Link href="/user-consentement">
-              <Button label="Submit" type="submit"  />
+              <Link href={`/user-consentement/${slug}`}>
+                <Button label="Submit" type="submit" />
               </Link>
             </div>
-            <p><strong>Aide-Budget, c est quoi ?</strong> Le gouvernement a lancé le 27 février 2023 une nouvelle initiative nommée
-             Aide-Budget qui associe, dans une démarche commune de prévention du surendettement, pouvoirs publics,
-             fournisseurs d énergie, fédérations de bailleurs sociaux et le réseau des Points Conseil Budget.
-              Cette expérimentation, menée durant douze mois sur onze départements en métropole et en Outre-mer, 
-              a pour objectif de repérer en amont les signaux de surendettement des ménages afin de leur proposer 
-              un accompagnement personnalisé</p>
+            <p>
+              <strong>Aide-Budget, c est quoi ?</strong> Le gouvernement a lancé
+              le 27 février 2023 une nouvelle initiative nommée Aide-Budget qui
+              associe, dans une démarche commune de prévention du
+              surendettement, pouvoirs publics, fournisseurs d énergie,
+              fédérations de bailleurs sociaux et le réseau des Points Conseil
+              Budget. Cette expérimentation, menée durant douze mois sur onze
+              départements en métropole et en Outre-mer, a pour objectif de
+              repérer en amont les signaux de surendettement des ménages afin de
+              leur proposer un accompagnement personnalisé
+            </p>
           </div>
         </div>
       </div>
