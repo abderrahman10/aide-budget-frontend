@@ -6,8 +6,10 @@ import CheckBox from "@/components/check-box/CheckBox";
 import 'primeicons/primeicons.css';
 import PdfSigner from "@/components/Pdf-signer/PdfSigner";
         
-export default function UserInformation() {
+export default function UserConsentement({  params,}: {  params: { slug: string };}) {
   
+  const { slug } = params;
+
   return (
     <div className={classes.container}>
       <div className={classes.column1}>
@@ -31,7 +33,7 @@ export default function UserInformation() {
         </i>
 
           <div>
-            <CheckBox />
+            <CheckBox  slug={slug} />
         
           </div>
 

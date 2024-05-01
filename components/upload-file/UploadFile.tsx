@@ -7,6 +7,7 @@ import { FileUpload } from 'primereact/fileupload';
 import classes from "./UploadFile.module.css";
 import React from 'react'
 import { parseCookies } from 'nookies';
+import RelanceCsv from "../relance-csv/RelanceCsv";
 
  const UploadFile = () => {
   const cookies = parseCookies();
@@ -79,7 +80,7 @@ import { parseCookies } from 'nookies';
         </div>
         <div className={classes.submitButton}>
             <Button label="Importer" type="submit" />
-              
+            
          </div>   
         
       </form>

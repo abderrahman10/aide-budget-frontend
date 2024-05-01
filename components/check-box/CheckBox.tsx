@@ -4,7 +4,10 @@ import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
 import  Styles  from "./Checkbox.module.css";
 import Pdf from "../pdf/Pdf";
 import PdfSigner from "../Pdf-signer/PdfSigner";
-export default function CheckBox() {
+
+export default function CheckBox({  slug }: {  slug: string}) {
+  const token =slug;
+
     const [confirmations, setConfirmation] = useState<string[]>([]);
    const[ConfirmationCount,setConfirmationCount] = useState<number>(0);
 
@@ -24,7 +27,6 @@ export default function CheckBox() {
     return (
         <div className={Styles.checkbox}> 
         <div className="flex flex-column gap-3">
-
             <div className="flex align-items-top">
                 <Checkbox inputId="confirmation1" name="1" value="1" onChange={onConfirmationChange} checked={confirmations.includes('1')} />
                 <label htmlFor="confirmation1" className="ml-2">J accepte que l entreprise EDF enregistre et traite les données à caractère 
@@ -42,7 +44,7 @@ export default function CheckBox() {
           {ConfirmationCount === 3 && (
                     <>
                         <Pdf />
-                        <PdfSigner />
+                        <PdfSigner slug={token} />
                     </> )}
                
           </div>

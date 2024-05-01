@@ -72,11 +72,15 @@ export default function Consentements() {
             </h4>
             <hr />
           </div>
-          <div className="submitButtons" >
+          <div className={classes.test}>
+               <div className="submitButtons" >
           <UploadFile/>
-    
+         </div>
+         <div className={classes.relanceComponent}>
           <RelanceCsv/>
          </div>
+          </div>
+       
           
         </div>
       </div>
