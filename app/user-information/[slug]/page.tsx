@@ -21,6 +21,8 @@ export default function UserInformation({  params,}: {  params: { slug: string }
     //eslint-disable-next-line
   }, []);
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   async function getUserByToken() {
     try {
       const response = await fetch(
@@ -62,25 +64,26 @@ export default function UserInformation({  params,}: {  params: { slug: string }
           className={classes.logo}
         />
         <div className={classes.secondColumnInfo}>
-          {userData && <UserTable userData={userData} />}
+          {userData && <UserTable userData={userData} /> }
+        
 
           <div className={classes.importSection}>
             <h2>
-              Pour bénéficier dun accompagnement aide budget, rien de plus
+              Pour bénéficier  d&apos;un accompagnement aide budget, rien de plus
               simple, il vous suffit de donner votre accord en cliquant sur le
-              bouton ci-dessous
+              bouton ci-dessous : 
             </h2>
 
             <div className="card flex flex-wrap justify-content-center gap-2">
               <Link href={`/user-consentement/${slug}`}>
-                <Button label="Submit" type="submit" />
+                <Button label="Donner Mon accord" type="submit" />
               </Link>
             </div>
             <p>
-              <strong>Aide-Budget, c est quoi ?</strong> Le gouvernement a lancé
+              <strong>Aide-Budget, c&apos; est quoi ?</strong> Le gouvernement a lancé
               le 27 février 2023 une nouvelle initiative nommée Aide-Budget qui
               associe, dans une démarche commune de prévention du
-              surendettement, pouvoirs publics, fournisseurs d énergie,
+              surendettement, pouvoirs publics, fournisseurs d&apos; énergie,
               fédérations de bailleurs sociaux et le réseau des Points Conseil
               Budget. Cette expérimentation, menée durant douze mois sur onze
               départements en métropole et en Outre-mer, a pour objectif de

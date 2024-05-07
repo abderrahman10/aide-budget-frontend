@@ -4,7 +4,6 @@ import logo from "@/assets/files.png";
 import Link from "next/link";
 import CheckBox from "@/components/check-box/CheckBox";
 import 'primeicons/primeicons.css';
-import PdfSigner from "@/components/Pdf-signer/PdfSigner";
         
 export default function UserConsentement({  params,}: {  params: { slug: string };}) {
   
@@ -26,8 +25,9 @@ export default function UserConsentement({  params,}: {  params: { slug: string 
       </div>
       <div className={classes.column2}>
         <div className={classes.secondColumnInfo}>
-        <i className="pi pi-angle-left" style={{ color: 'slateblue' }}>
-            <Link className={classes.LinkButton} href="/user-information">
+        <i className="pi pi-angle-left" style={{ color: 'slateblue' }}>     
+
+            <Link className={classes.LinkButton} href={`/user-information/${slug}`}>
             Retour
           </Link>
         </i>
@@ -43,7 +43,7 @@ export default function UserConsentement({  params,}: {  params: { slug: string 
               {" "}
               <strong>Nota Bene :</strong> Vous pouver retirer votre
               consentement à tout moment.Attention, vous ne pourrez plus
-              bénéficier de l accompagnement Initiative Aide Budget
+              bénéficier de l&apos; accompagnement Initiative Aide Budget
             </p>
             <p>
               {" "}

@@ -9,7 +9,8 @@
     padding: 20px;
     text-align: center;
     color: #ffffff;
-    overflow-y : auto
+    overflow-y : auto;
+    height: 100vh;
   }
   
   .column2 {

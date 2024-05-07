@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
 import  Styles  from "./Checkbox.module.css";
 import Pdf from "../pdf/Pdf";
-import PdfSigner from "../Pdf-signer/PdfSigner";
+import OtpDialog from "../otp-dialog/OtpDialog";
 
 export default function CheckBox({  slug }: {  slug: string}) {
   const token =slug;
@@ -29,7 +29,7 @@ export default function CheckBox({  slug }: {  slug: string}) {
         <div className="flex flex-column gap-3">
             <div className="flex align-items-top">
                 <Checkbox inputId="confirmation1" name="1" value="1" onChange={onConfirmationChange} checked={confirmations.includes('1')} />
-                <label htmlFor="confirmation1" className="ml-2">J accepte que l entreprise EDF enregistre et traite les données à caractère 
+                <label htmlFor="confirmation1" className="ml-2">J&apos;accepte que l entreprise EDF enregistre et traite les données à caractère 
                 personnel que je viens de renseigner dans ce formulaire qui correspondent à mes nom et prénom, mes coordonnées mail et téléphonique.</label>
             </div>
             <div className="flex align-items-top">
@@ -38,13 +38,13 @@ export default function CheckBox({  slug }: {  slug: string}) {
             </div>
             <div className="flex align-items-top">
                 <Checkbox inputId="confirmation3" name="3" value="3" onChange={onConfirmationChange} checked={confirmations.includes('3')} />
-                <label htmlFor="confirmation3" className="ml-2">J accepte que ces informations soient communiquées à des tiers extérieurs Points Conseil Budget suivants : UDAF 93 dans le respect des finalités précédemment énoncées.</label>
+                <label htmlFor="confirmation3" className="ml-2">J&apos;accepte que ces informations soient communiquées à des tiers extérieurs Points Conseil Budget suivants : UDAF 93 dans le respect des finalités précédemment énoncées.</label>
             </div>
           <div className="pdf">
           {ConfirmationCount === 3 && (
                     <>
                         <Pdf />
-                        <PdfSigner slug={token} />
+                        <OtpDialog slug={token} />
                     </> )}
                
           </div>

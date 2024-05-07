@@ -48,7 +48,7 @@ import RelanceCsv from "../relance-csv/RelanceCsv";
         toast.current?.show({
           severity: "success",
           summary: "Success",
-          detail: "Data parsed successfully",
+          detail: "Les données ont été enregistré avec succès",
           life: 3000,
         });
       } catch (error:any) {
@@ -63,7 +63,7 @@ import RelanceCsv from "../relance-csv/RelanceCsv";
       toast.current?.show({
         severity: "warn",
         summary: "Warning",
-        detail: "Please select a file to upload",
+        detail: "Veuillez sélectionner un fichier.",
         life: 3000,
       });
     }

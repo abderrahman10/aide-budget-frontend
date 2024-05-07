@@ -8,6 +8,7 @@ import { downloadFile } from "../utils/DownloadFile";
 
 const RelanceCsv = () => {
   const toast = useRef<Toast>(null);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const generateCsvHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -17,7 +18,7 @@ const RelanceCsv = () => {
       toast.current?.show({
         severity: "success",
         summary: "Success",
-        detail: "File Csv downloaded successfully",
+        detail: "Le fichier CSV a été téléchargé avec succès",
         life: 3000,
       });
     } catch (error:any) {
