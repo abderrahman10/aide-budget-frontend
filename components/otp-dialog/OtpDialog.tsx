@@ -3,8 +3,8 @@ import React, { FormEvent, useRef, useState } from "react";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
-
 import InputOtpCode from "../otp-verification/InputOtpCode";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 
 export default function OtpDialog({ slug }: { slug: string }) {
   const toast = useRef<Toast>(null);
@@ -12,14 +12,13 @@ export default function OtpDialog({ slug }: { slug: string }) {
   const [visible, setVisible] = useState<boolean>(false);
   const token = slug;
 
-  const SendEmailWithOtpCodeHandler = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const SendEmailWithOtpCodeHandler = async () => {
     try {
       const url = `http://localhost:8081/api/v1/participants/email/sendEmailWithOtp/${token}`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           // Add any other headers if needed
         },
       });
@@ -44,34 +43,52 @@ export default function OtpDialog({ slug }: { slug: string }) {
       });
     }
   };
+  const accept = () => {
+    SendEmailWithOtpCodeHandler;
+    setVisible(true);
+  };
 
+  const reject = () => {
+    toast.current?.show({
+      severity: "warn",
+      summary: "Rejected",
+      detail: "You have rejected",
+      life: 3000,
+    });
+  };
+
+  const confirm1 = () => {
+    confirmDialog({
+      message: "Êtes-vous sûr de vouloir continuer?",
+      header: "Confirmation",
+      icon: "pi pi-exclamation-triangle",
+      defaultFocus: "accept",
+      accept,
+      reject,
+    });
+  };
   return (
-   
-       
-     
-   <div>
+    <div>
       <div className="card flex justify-content-center">
-         <form onSubmit={SendEmailWithOtpCodeHandler}>
+        <ConfirmDialog
+          style={{ width: "50vw" }}
+          breakpoints={{ "1100px": "75vw", "960px": "100vw" }}
+        />
         <Button
           label="signer le pdf "
-          icon="pi pi-external-link"
-          onClick={() => {
-            setVisible(true);
-          }}
-        /> </form>
+          icon="pi pi-pen-to-square"
+          onClick={confirm1}
+        />{" "}
         <Toast ref={toast} />
-
         <Dialog
           visible={visible}
           modal
           style={{ width: "50rem" }}
           onHide={() => setVisible(false)}
         >
-          <InputOtpCode slug={token} />
-
+          <InputOtpCode slug={token} onClose={() => setVisible(false)} />
         </Dialog>
       </div>
-    </div> 
-   
+    </div>
   );
 }

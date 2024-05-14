@@ -8,6 +8,7 @@ import classes from "./UploadFile.module.css";
 import React from 'react'
 import { parseCookies } from 'nookies';
 import RelanceCsv from "../relance-csv/RelanceCsv";
+import CreateParticipantForm from "../createParticipant/CreateParticipantForm";
 
  const UploadFile = () => {
   const cookies = parseCookies();
@@ -51,6 +52,10 @@ import RelanceCsv from "../relance-csv/RelanceCsv";
           detail: "Les données ont été enregistré avec succès",
           life: 3000,
         });
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      // 
       } catch (error:any) {
         toast.current?.show({
           severity: "error",
@@ -70,21 +75,28 @@ import RelanceCsv from "../relance-csv/RelanceCsv";
   }
   return (
     <div className={classes.importSection}>
-      <h2>Importer une nouvelle liste de participant</h2>
-      <h4>Pour importer un fichier, cliquez sur le bouton ci-dessous :</h4>
+      <h4>Importer une nouvelle liste de participant</h4>
+      <p>Si vous souhaitez importer un fichier, cliquez simplement sur &quot;Importer&quot;:</p>
       <form onSubmit={UploadFileForm}>
         <Toast ref={toast} />
         <div className="card flex flex-wrap justify-content-center">
-          <FileUpload name="file" multiple onSelect={(e) => setSelectedFiles(e.files)} accept=".csv" emptyTemplate={<p className="m-0">Drag and drop files to here to upload.</p>} />
-          
+          {/* <FileUpload name="file" multiple onSelect={(e) => setSelectedFiles(e.files)} accept=".csv" emptyTemplate={<p className="m-0">Drag and drop files to here to upload.</p>} /> */}
+          <input
+            type="file"
+            className={classes.Custumeinputfile}
+            name="file"
+            id="fileInput"
+            multiple
+            accept=".csv"
+            onChange={(e) => setSelectedFiles(e.target.files ? Array.from(e.target.files) : [])}
+          />
         </div>
-        <div className={classes.submitButton}>
-            <Button label="Importer" type="submit" />
-            
+       
+        <div className="card flex flex-wrap justify-content-center gap-3">
+            <Button label="Importer" type="submit"  icon="pi pi-file-arrow-up" />
          </div>   
-        
       </form>
-      
+
     </div>
   );
 }

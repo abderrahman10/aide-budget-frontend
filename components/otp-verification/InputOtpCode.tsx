@@ -3,7 +3,7 @@ import { Button } from "primereact/button";
 import styles from "./InputOtpCode.module.css";
 import { Toast } from "primereact/toast";
 
-export default function InputOtpCode({ slug }: { slug: string }) {
+export default function InputOtpCode({ slug ,onClose}: { slug: string ,onClose: () => void }) {
   const toast = useRef<Toast>(null);
 
   const [otp, setOtp] = useState<string>('');
@@ -40,7 +40,11 @@ export default function InputOtpCode({ slug }: { slug: string }) {
           summary: "Success",
           detail: "Mail avec votre contrat signé a été envoyer avec succés",
           life: 3000,
+          
         });
+        setTimeout(() => {
+          onClose();
+        }, 5000);
       } else {
         // Si la réponse n'est pas OK, extraire le message d'erreur du backend
         const errorMessage = await response.text();

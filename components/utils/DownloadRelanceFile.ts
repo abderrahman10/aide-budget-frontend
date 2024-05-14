@@ -1,6 +1,6 @@
 import { parseCookies } from 'nookies';
 
-export const downloadFile = async (url: string) => {
+export const DownloadRelanceFile = async (url: string) => {
   const cookies = parseCookies();
   const JSSESSION = cookies.JSESSIONID;
   const response = await fetch(url, {

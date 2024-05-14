@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 
 export async function UserOauth2Info() {
+
     const cookieStore = cookies();
     const JSSESSION = cookieStore.get('JSESSIONID')
 
