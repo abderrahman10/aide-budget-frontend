@@ -3,12 +3,10 @@ import { useRef, useState } from "react";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import { FormEvent } from "react";
-import { FileUpload } from 'primereact/fileupload';
 import classes from "./UploadFile.module.css";
 import React from 'react'
 import { parseCookies } from 'nookies';
-import RelanceCsv from "../relance-csv/RelanceCsv";
-import CreateParticipantForm from "../createParticipant/CreateParticipantForm";
+
 
  const UploadFile = () => {
   const cookies = parseCookies();
@@ -29,7 +27,7 @@ import CreateParticipantForm from "../createParticipant/CreateParticipantForm";
 
       try {
         const response = await fetch(
-          "http://localhost:8081/api/v1/participants/admin/csv/upload",
+          "http://localhost:8081/api/v1/admin/csv/upload",
           {
             method: "POST",
             body: formData,

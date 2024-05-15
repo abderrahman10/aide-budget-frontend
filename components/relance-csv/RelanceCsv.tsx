@@ -4,7 +4,6 @@ import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import { FormEvent } from "react";
 import { DownloadRelanceFile } from "../utils/DownloadRelanceFile";
-import styles from './RelanceCsv.module.css';
 const RelanceCsv = () => {
   const toast = useRef<Toast>(null);
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -13,7 +12,7 @@ const RelanceCsv = () => {
     event.preventDefault();
     try {
       const url =
-        "http://localhost:8081/api/v1/participants/admin/csv/download";
+        "http://localhost:8081/api/v1/admin/csv/download";
       await DownloadRelanceFile(url);
       toast.current?.show({
         severity: "success",
@@ -38,7 +37,7 @@ const RelanceCsv = () => {
       <h4>Relance des Participants Non-Répondants</h4>
       <p>Pour relancer les participants qui n&apos;ont pas répondu à nos précédents emails, veuillez cliquer sur le bouton ci-dessous.</p>
         <form onSubmit={generateCsvHandler}>
-          <Button className={styles.relanceButton} label="Relancer" />
+          <Button label="Relancer" icon="pi pi-sync" />
         </form>
       </div>
     </>

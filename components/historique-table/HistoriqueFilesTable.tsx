@@ -6,8 +6,12 @@ import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import { DownloadExportFile } from "../utils/DownlaodExportFile";
 import { Paginator, PaginatorPageChangeEvent } from "primereact/paginator";
+import { parseCookies } from 'nookies';
 
 export default function HistoriqueFilesTable() {
+
+  const cookies = parseCookies();
+  const JSSESSION = cookies.JSESSIONID;
   const [first, setFirst] = useState<number>(0);
   const [rows, setRows] = useState<number>(10);
 
@@ -19,11 +23,12 @@ export default function HistoriqueFilesTable() {
   const toast = useRef<Toast>(null);
   useEffect(() => {
     getAllFilesWithDate();
+     //eslint-disable-next-line
   }, []);
 
   const generateExportFile = async (fileName: string) => {
     try {
-      const url = `http://localhost:8081/api/v1/participants/admin/file/fileSystems?file=${encodeURIComponent(
+      const url = `http://localhost:8081/api/v1/admin/file/downloadImageFromFileSystem?file=${encodeURIComponent(
         fileName
       )}`;
       await DownloadExportFile(url, fileName);
@@ -46,8 +51,15 @@ export default function HistoriqueFilesTable() {
   async function getAllFilesWithDate() {
     try {
       const response = await fetch(
-        `http://localhost:8081/api/v1/participants/admin/file/getFileNames`
-      );
+        `http://localhost:8081/api/v1/admin/file/getFileNames`,
+        {
+          method: "GET",
+          headers: {
+            Cookie: `JSESSIONID=${JSSESSION?.valueOf}`,
+          },
+          credentials: "include",
+        });
+     
 
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération des fichiers");

@@ -1,46 +1,20 @@
-"use client";
 import Image from "next/image";
 import classes from "./page.module.css";
 import logo from "@/assets/files.png";
 import logo2 from "@/assets/logo.png";
-import { Button } from "primereact/button";
 import Link from "next/link";
 import "primeicons/primeicons.css";
-import UserTable from "@/components/user-table/UserTable";
+import UserTable2 from "@/components/user-table/UserTable2";
+import Blog from "@/components/blog/Blog";
+import Cards from "@/components/card/Card";
 
-import React, {useEffect, useState } from "react";
-
-export default function UserInformation({  params,}: {  params: { slug: string };}) {
-  const [userData, setUserData] = useState<any>(null);
-
+export default function UserInformation({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
-  
-  useEffect(() => {
-    
-    getUserByToken();
-    //eslint-disable-next-line
-  }, []);
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  async function getUserByToken() {
-    try {
-      const response = await fetch(
-        `http://localhost:8081/api/v1/participants/find/${slug}`
-      );
-
-      if (!response.ok) {
-        throw new Error("Erreur lors de la récupération du participant");
-      }
-
-      const data = await response.json();
-      // Faire quelque chose avec les données récupérées, par exemple, mettre à jour l'état du composant avec les données du participant
-      console.log(data);
-      setUserData(data);
-    } catch (error) {
-      console.error("Erreur:", error);
-    }
-  }
   return (
     <div className={classes.container}>
       <div className={classes.column1}>
@@ -64,32 +38,17 @@ export default function UserInformation({  params,}: {  params: { slug: string }
           className={classes.logo}
         />
         <div className={classes.secondColumnInfo}>
-          {userData && <UserTable userData={userData} /> }
-        
+          <div className="userInformationTable">
+            <UserTable2 slug={slug} />
+          </div>
 
-          <div className={classes.importSection}>
-            <h2>
-              Pour bénéficier  d&apos;un accompagnement aide budget, rien de plus
-              simple, il vous suffit de donner votre accord en cliquant sur le
-              bouton ci-dessous : 
-            </h2>
-
-            <div className="card flex flex-wrap justify-content-center gap-2">
-              <Link href={`/user-consentement/${slug}`}>
-                <Button label="Donner Mon accord" type="submit" />
-              </Link>
+          <div className={classes.blogCardSection}>
+            <div className="blog">
+              <Blog />
             </div>
-            <p>
-              <strong>Aide-Budget, c&apos; est quoi ?</strong> Le gouvernement a lancé
-              le 27 février 2023 une nouvelle initiative nommée Aide-Budget qui
-              associe, dans une démarche commune de prévention du
-              surendettement, pouvoirs publics, fournisseurs d&apos; énergie,
-              fédérations de bailleurs sociaux et le réseau des Points Conseil
-              Budget. Cette expérimentation, menée durant douze mois sur onze
-              départements en métropole et en Outre-mer, a pour objectif de
-              repérer en amont les signaux de surendettement des ménages afin de
-              leur proposer un accompagnement personnalisé
-            </p>
+            <div className="card">
+              <Cards slug={slug} />
+            </div>
           </div>
         </div>
       </div>

@@ -26,5 +26,6 @@ export const DownloadExportFile = async (url: string, fileName: string) => {
     window.URL.revokeObjectURL(blobUrl);
   } catch (error) {
     console.error("Erreur lors du téléchargement du fichier:", error);
+    throw error;
   }
 };

@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { Fieldset } from "primereact/fieldset";
 
 const Pdf = () => {
   const [pdfUrl, setPdfUrl] = useState("");
@@ -37,17 +38,17 @@ const Pdf = () => {
   }, []);
   return (
     <>
-      <div>
-        <p>
-          {" "}
-          <i className="pi pi-exclamation-circle" style={{ fontSize: "1rem" }}></i>
-          <strong>
-            {" "}
-            Veullier lire attentivement votre recuil de consentement avant de le
-            valider en cliquant sur le button &quot;signer&quot; en bas du
-            document.
-          </strong>
-        </p>
+      <div className="container">
+        <div className="card">
+          <Fieldset legend="Attention !">
+            <p className="m-0">
+              Veullier lire attentivement votre recuil de consentement avant de
+              le valider en cliquant sur le button &quot;signer&quot; en bas du
+              document.
+            </p>
+          </Fieldset>
+        </div>
+        <br />
         {pdfUrl && (
           <iframe
             src={pdfUrl}

@@ -2,9 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { UserOauth2Info } from "../user-oauth2-info/UserOauth2Info";
 import classes from "./AdminInfo.module.css";
+import { parseCookies } from 'nookies';
+
+
+
 export default function AdminInfo({ email }: { email: string }) {
   const [userData, setUserData] = useState<any>(null);
-
+  const cookies = parseCookies();
+  const JSSESSION = cookies.JSESSIONID;
   useEffect(() => {
     getAdminByEmail();
     //eslint-disable-next-line
@@ -15,17 +20,22 @@ export default function AdminInfo({ email }: { email: string }) {
       const AdminEmail = email;
       const formData = new FormData();
       formData.append("email", AdminEmail);
-
+  
       const response = await fetch(
-        `http://localhost:8081/api/v1/participants/admin/findByEmail?email=${encodeURIComponent(
-          AdminEmail
-        )}`
+        `http://localhost:8081/api/v1/admin/findByEmail?email=${encodeURIComponent(AdminEmail)}`,
+        {
+          method: 'GET',
+          headers: {
+            Cookie: `JSESSIONID=${JSSESSION?.valueOf}`,
+          },
+          credentials: "include",
+        }
       );
-
+  
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération du participant");
       }
-
+  
       const data = await response.json();
       // Mettre à jour l'état du composant avec les données récupérées
       setUserData(data);

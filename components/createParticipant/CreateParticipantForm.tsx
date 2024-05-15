@@ -6,9 +6,12 @@ import { Dropdown } from "primereact/dropdown";
 import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
 import { Message } from "primereact/message";
+import { parseCookies } from 'nookies';
 
 
 const CreateParticipantForm = () => {
+  const cookies = parseCookies();
+  const JSSESSION = cookies.JSESSIONID;
   const toast = useRef<Toast>(null);
   const [departements, setDepartements] = useState([]);
   const [selectedDepartement, setSelectedDepartement] = useState(null);
@@ -18,6 +21,7 @@ const CreateParticipantForm = () => {
 
   useEffect(() => {
     fetchDepartements();
+     //eslint-disable-next-line
   }, []);
 
   const [formData, setFormData] = useState({
@@ -33,7 +37,14 @@ const CreateParticipantForm = () => {
 
   const fetchDepartements = async () => {
     try {
-      const response = await fetch("http://localhost:8081/api/v1/participants/admin/getAllDepartements");
+      const response = await fetch("http://localhost:8081/api/v1/admin/getAllDepartements",
+      {
+        method: "GET",
+        headers: {
+          Cookie: `JSESSIONID=${JSSESSION?.valueOf}`,
+        },
+        credentials: "include",
+      });
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération des départements");
       }
@@ -75,12 +86,14 @@ const CreateParticipantForm = () => {
       return;
     }
     try {
-      const url = "http://localhost:8081/api/v1/participants/admin";
+      const url = "http://localhost:8081/api/v1/admin";
       const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Cookie: `JSESSIONID=${JSSESSION?.valueOf}`,
         },
+        credentials: "include",
         body: JSON.stringify(formData),
       });
 
