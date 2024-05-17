@@ -49,7 +49,7 @@ export default function UserConsentement({  params,}: {  params: { slug: string 
             <p>
               {" "}
               <strong>Pour tout question : </strong> vous pouvez nous écrire à{" "}
-              <a href="email@email.com">email@email.com</a>
+              <a href="email@email.com">dc-dn-panel@edf.fr</a>
             </p>
           </div>
         </div>
