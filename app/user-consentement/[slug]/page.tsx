@@ -41,7 +41,7 @@ export default function UserConsentement({  params,}: {  params: { slug: string 
           <div>
             <p>
               {" "}
-              <hr />
+            
               <strong>Nota Bene :</strong> Vous pouver retirer votre
               consentement à tout moment.Attention, vous ne pourrez plus
               bénéficier de l&apos; accompagnement Initiative Aide Budget

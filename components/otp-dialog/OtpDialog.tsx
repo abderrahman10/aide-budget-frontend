@@ -43,8 +43,8 @@ export default function OtpDialog({ slug }: { slug: string }) {
       });
     }
   };
-  const accept = () => {
-    SendEmailWithOtpCodeHandler;
+  const accept = async () => {
+    SendEmailWithOtpCodeHandler();
     setVisible(true);
   };
 

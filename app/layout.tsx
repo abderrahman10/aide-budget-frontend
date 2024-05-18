@@ -8,6 +8,7 @@ import "/node_modules/primeflex/primeflex.css";
 import { PrimeReactProvider } from "primereact/api";
 
 import AuthenticatedGuard from "@/components/authguard/AuthenticatedGuard";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
