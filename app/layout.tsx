@@ -8,7 +8,9 @@ import "/node_modules/primeflex/primeflex.css";
 import { PrimeReactProvider } from "primereact/api";
 
 import AuthenticatedGuard from "@/components/authguard/AuthenticatedGuard";
-import Footer from "@/components/footer/Footer";
+import Navbar from "@/components/navbar/Navbar";
+import FootBar from "@/components/footer/Footer";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +29,9 @@ export default function RootLayout({
       <body className={inter.className} suppressHydrationWarning={true}>
       {/* <AuthenticatedGuard> */}
           <PrimeReactProvider>
+            <Navbar/>
             {children}
+            <FootBar/>
             </PrimeReactProvider>
             {/* </AuthenticatedGuard> */}
       </body>

@@ -1,0 +1,25 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1; /* Exemple de couleur de fond */
+  }
+  
+  .content {
+    max-width: 800px; /* Largeur maximale pour centrer le contenu */
+  }
+  
+  .footer p {
+    margin: 20px 0; /* Espacement vertical entre les paragraphes */
+  }
+  
+  .logo {
+    margin-bottom: 20px; /* Espacement sous le logo */
+  }
+  
+  .footerBottom {
+    margin-top: 20px; /* Espacement au-dessus du bas du pied de page */
+  }
+ 

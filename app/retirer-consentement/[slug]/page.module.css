@@ -1,6 +1,5 @@
 .container {
     display: flex;
-    min-height: 100vh;
     
   }
   
@@ -10,16 +9,15 @@
     padding: 20px;
     text-align: center;
     color: #ffffff;
-    overflow-y: auto;
+    overflow-y : 100hv
   }
   
-  /* Colonne 2 */
   .column2 {
     flex: 8;
     background-color: #FFFFFF;
-    padding: 35px 100px 20px 100px;
+    padding: 35px 100px 35px 100px;
+    
   }
-  
   
   .fileImg {
     width: 25%;
@@ -29,9 +27,21 @@
     margin-top: 80px;
   }
   
+  .logo {
+    width: 18%;
 
+  }
+  
   .secondColumnInfo {
     text-align: left;
   }
   
+
+
+  .blogCardSection{
+    margin-top: 30px;
+    /* text-align: center; */
+  }
+
+
   

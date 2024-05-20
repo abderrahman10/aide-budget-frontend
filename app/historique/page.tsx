@@ -40,7 +40,7 @@ export default function Consentements() {
             className={classes.logo}
           />
           <div className={classes.secondColumnInfo}>
-            {/* <h4>
+            <h4>
               <b>Gestion des consentements</b>
             </h4>
             <p>
@@ -54,29 +54,8 @@ export default function Consentements() {
                 <b>Historique</b>
               </h4>
               <HistoriqueFilesTable />
-            </div> */}
-            <div className={classes.reservedSection}>
-              <hr />
-              <h4 className={classes.reservedTitle}>
-                <b>Section réservée aux administrateurs de application</b>
-              </h4>
-              <hr />
             </div>
-
-            <div className={classes.adminCompoenent}>
-              <div className={classes.uploadCompoenent}>
-                <UploadFile />
-              </div>
-              <div className={classes.createParticipant}>
-              <h4>Importer un nouvelle   participant</h4>
-         <p>Si vous souhaitez enregistrer un partcipant, cliquez simplement sur &quot;enregistrer &quot;</p>
-                <CreateParticipantForm />
-              </div>
-
-              <div className={classes.relanceSection}>
-                <RelanceCsv />
-              </div>
-            </div>
+           
           </div>
         </div>
       </div>

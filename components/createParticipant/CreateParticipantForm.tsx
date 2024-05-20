@@ -139,39 +139,46 @@ const CreateParticipantForm = () => {
             <div className="card">
               <div className="p-fluid formgrid grid">
                 <div className="field col-12 md:col-4">
-                  <label htmlFor="nom">Nom</label>
                   <InputText
                     id="nom"
                     type="text"
                     name="nom"
+                    placeholder="Nom" 
                     value={formData.nom}
                     onChange={handleInputChange}
+                    tooltip="Entrer votre nom"
+                    tooltipOptions={{ event: 'both' ,position: 'top'}}
                   />
                   {formSubmitted && !formData.nom && (
                     <small className="p-error">Nom est requis</small>
                   )}
                 </div>
                 <div className="field col-12 md:col-4">
-                  <label htmlFor="prenom">prenom</label>
+               
                   <InputText
                     id="prenom"
                     type="text"
                     name="prenom"
+                    placeholder="Prénom" 
                     value={formData.prenom}
                     onChange={handleInputChange}
+                    tooltip="Entrer votre Prénom"
+                    tooltipOptions={{ event: 'both' ,position: 'top'}}
                   />
                   {formSubmitted && !formData.prenom && (
                     <small className="p-error">prenom est requis</small>
                   )}
                 </div>
                 <div className="field col-12 md:col-4">
-                  <label htmlFor="telephone">telephone</label>
                   <InputText
                     id="telephone"
                     type="telephone"
                     name="telephone"
+                    placeholder="Téléphone" 
                     value={formData.telephone}
                     onChange={handleInputChange}
+                    tooltip="Entrer votre telephone"
+                    tooltipOptions={{ event: 'both' ,position: 'top'}}
                   />
                   {formSubmitted && !formData.telephone && (
                     <small className="p-error">telephone est requis</small>
@@ -179,11 +186,13 @@ const CreateParticipantForm = () => {
                 </div>
 
                 <div className="field col-12 md:col-6">
-                  <label htmlFor="email">Email</label>
                   <InputText
                     id="email"
                     type="email"
                     name="email"
+                    placeholder="Email" 
+                    tooltip="Entrer votre Email"
+                    tooltipOptions={{ event: 'both' ,position: 'left'}}
                     value={formData.email}
                     onChange={handleInputChange}
                   />
@@ -192,10 +201,12 @@ const CreateParticipantForm = () => {
                   )}
                 </div>
                 <div className="field col-12 md:col-6">
-                  <label htmlFor="departement">departement</label>
                   <Dropdown
                     id="departement"
+                  
                     value={selectedDepartement}
+                    tooltip="selectionné votre  département"
+                    tooltipOptions={{ event: 'both' ,position: 'right'}}
                     options={departements.map((departement) => ({
                       label: departement,
                       value: departement,
@@ -208,11 +219,13 @@ const CreateParticipantForm = () => {
                   )}
                 </div>
                 <div className="field col-12 md:col-4">
-                  <label htmlFor="bp">BP</label>
                   <InputText
                     id="bp"
                     type="text"
                     name="bp"
+                    placeholder="Bp"
+                    tooltip="Entré votre Bp"
+                    tooltipOptions={{ event: 'both' ,position: 'bottom'}}
                     value={formData.bp}
                     onChange={handleInputChange}
                   />
@@ -221,11 +234,13 @@ const CreateParticipantForm = () => {
                   )}
                 </div>
                 <div className="field col-12 md:col-4">
-                  <label htmlFor="pcb">PCB</label>
                   <InputText
                     id="pcb"
                     type="text"
                     name="pcb"
+                    placeholder="Pcb"
+                    tooltip="Entré votre Pcb"
+                    tooltipOptions={{ event: 'both' ,position: 'bottom'}}
                     value={formData.pcb}
                     onChange={handleInputChange}
                   />
@@ -234,11 +249,13 @@ const CreateParticipantForm = () => {
                   )}
                 </div>
                 <div className="field col-12 md:col-4">
-                  <label htmlFor="civilite">Civilité</label>
                   <InputText
                     id="civilite"
                     type="text"
                     name="civilite"
+                    placeholder="civilite"
+                    tooltip="Civilité"
+                    tooltipOptions={{ event: 'both' ,position: 'bottom'}}
                     value={formData.civilite}
                     onChange={handleInputChange}
                   />
