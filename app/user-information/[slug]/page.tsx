@@ -7,7 +7,7 @@ import "primeicons/primeicons.css";
 import UserTable2 from "@/components/user-table/UserTable2";
 import Blog from "@/components/blog/Blog";
 import Cards from "@/components/card/Card";
-import { FindParticipant } from "@/components/find-participant/FindParticipant";
+import { FindClient, FindParticipant } from "@/components/find-participant/FindParticipant";
 import AccessDeniedPage from "@/app/access-denied/page";
 
 export default async function UserInformation({
@@ -18,6 +18,9 @@ export default async function UserInformation({
   const { slug } = params;
   const userInfo = await FindParticipant(params);
   const userToken = userInfo ? userInfo.token : null;
+  const clientInfo=await FindClient(params);
+   const client_consentement= clientInfo ? clientInfo.horodatageConsentement : null ;
+
   return (
     <div className={classes.container}>
       {userToken ? (

@@ -16,10 +16,10 @@ export default function UserNavbar () {
      return null;
     }
     const items: MenuItem[] = [
-        {
-            label: 'Home',
-            icon: 'pi pi-home'
-        },
+        // {
+        //     label: 'Home',
+        //     icon: 'pi pi-home'
+        // },
         // {
         //     label: 'Features',
         //     icon: 'pi pi-star'

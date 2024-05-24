@@ -9,7 +9,7 @@ import Blog from "@/components/blog/Blog";
 import Cards from "@/components/card/Card";
 import RetirerConsentment from "@/components/retirer-consentement/RetirerConsentment";
 import RenvoyerConvention from "@/components/renvoyer-convention/RenvoyerConvention";
-import { FindParticipant } from "@/components/find-participant/FindParticipant";
+import { FindClient, FindParticipant } from "@/components/find-participant/FindParticipant";
 import AccessDeniedPage from "@/app/access-denied/page";
 
 export default async function UserInformation({
@@ -21,9 +21,11 @@ export default async function UserInformation({
 
   const userInfo = await FindParticipant(params)
 const userToken = userInfo ? userInfo.token : null;
+const clientInfo = await FindClient(params)
+const client_consentement = clientInfo ? clientInfo.horodatageConsentement : null;
 return (
   <div className={classes.container}>
-    {userToken ? (
+    {userToken && client_consentement ? (
       <>
         <div className={classes.column1}>
           <div className={classes.columnContent}>

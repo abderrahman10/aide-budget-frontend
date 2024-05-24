@@ -50,9 +50,9 @@ import { parseCookies } from 'nookies';
           detail: "Les données ont été enregistré avec succès",
           life: 3000,
         });
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 3000);
       // 
       } catch (error:any) {
         toast.current?.show({
