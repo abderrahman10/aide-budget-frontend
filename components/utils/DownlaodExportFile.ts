@@ -1,13 +1,12 @@
 import { parseCookies } from 'nookies';
-
-export const DownloadExportFile = async (url: string, fileName: string) => {
+export const DownloadExportFile = async (url: string, id: string, fileName: string) => {
   try {
     const cookies = parseCookies();
-    const JSSESSION = cookies.JSESSIONID;
+    const JSESSION = cookies.JSESSIONID;
     const response = await fetch(url, {
       method: "GET",
       headers: {
-        Cookie: `JSESSIONID=${JSSESSION}`,
+        Cookie: `JSESSIONID=${JSESSION}`,
       },
       credentials: "include",
     });
@@ -20,7 +19,7 @@ export const DownloadExportFile = async (url: string, fileName: string) => {
     const blobUrl = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = blobUrl;
-    a.download = fileName;
+    a.download = fileName; // Ajouter ".csv" à la fin du nom du fichier
     document.body.appendChild(a);
     a.click();
     window.URL.revokeObjectURL(blobUrl);

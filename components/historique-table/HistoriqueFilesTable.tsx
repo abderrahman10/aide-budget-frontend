@@ -26,12 +26,10 @@ export default function HistoriqueFilesTable() {
      //eslint-disable-next-line
   }, []);
 
-  const generateExportFile = async (fileName: string) => {
+  const generateExportFile = async (id: number,fileName: string) => {
     try {
-      const url = `http://localhost:8081/api/v1/admin/file/downloadImageFromFileSystem?file=${encodeURIComponent(
-        fileName
-      )}`;
-      await DownloadExportFile(url, fileName);
+      const url = `http://localhost:8081/api/v1/admin/file/downloadImageFromFileSystem?id=${id}`;
+      await DownloadExportFile(url, id.toString(), fileName);
       toast.current?.show({
         severity: "success",
         summary: "Success",
@@ -104,7 +102,7 @@ export default function HistoriqueFilesTable() {
             <Button
               label="Télécharger"
               icon="pi pi-download"
-              onClick={() => generateExportFile(rowData.fileName)}
+              onClick={() => generateExportFile(Number(rowData.id),rowData.fileName)}
             />
           )}
           style={{ width: "20%" }}

@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    min-height: 100vh; 
+  }
+  
+  .column1 {
+    flex: 4;
+    background: linear-gradient(135deg, #1058C7, #0F58C9);
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    overflow-y: auto;
+  }
+  
+  /* Colonne 2 */
+  .column2 {
+    flex: 8;
+    background-color: #FFFFFF;
+    padding: 35px 100px 20px 100px;
+  }
+  
+  .fileImg {
+    width: 25%;
+  }
+  
+  .columnContent {
+    margin-top: 80px;
+  }
+  
+  .logo {
+    width: 18%;
+    
+  }
+  
+  .secondColumnInfo {
+    text-align: center;
+  }
+  .cercleChart {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  
+  }
+  .LineChart{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cercleChartTile {
+    color: #b4152f;
+  }
+  .LineChartTile {
+    color: #b4152f;
+  }
+  
+
+  
