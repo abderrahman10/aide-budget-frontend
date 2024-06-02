@@ -1,6 +1,6 @@
 import Image from "next/image";
 import classes from "./page.module.css";
-import logo from "@/assets/files.png";
+import logo from "@/assets/info-perso.png";
 import logo2 from "@/assets/logo.png";
 import { Button } from "primereact/button";
 import UploadFile from "@/components/upload-file/UploadFile";
@@ -40,21 +40,7 @@ export default function Consentements() {
             className={classes.logo}
           />
           <div className={classes.secondColumnInfo}>
-            {/* <h4>
-              <b>Gestion des consentements</b>
-            </h4>
-            <p>
-              Pour consulter les dernières exportations de consentements ou de
-              retraits de consentements, veuillez vous référer au tableau
-              ci-dessous :
-            </p>
-
-            <div className={classes.tableElement}>
-              <h4>
-                <b>Historique</b>
-              </h4>
-              <HistoriqueFilesTable />
-            </div> */}
+        
             <div className={classes.reservedSection}>
               <hr />
               <h4 className={classes.reservedTitle}>
@@ -68,8 +54,8 @@ export default function Consentements() {
                 <UploadFile />
               </div>
               <div className={classes.createParticipant}>
-              <h4>Importer un nouvelle   participant</h4>
-         <p>Si vous souhaitez enregistrer un partcipant, cliquez simplement sur &quot;enregistrer &quot;</p>
+              <h4>Importer un nouveau participant</h4>
+         <p>Pour enregistrer un participant, cliquez simplement sur le bouton ci-dessous.</p>
                 <CreateParticipantForm />
               </div>
 

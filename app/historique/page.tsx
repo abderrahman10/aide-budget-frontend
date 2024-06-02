@@ -1,15 +1,10 @@
 import Image from "next/image";
 import classes from "./page.module.css";
-import logo from "@/assets/files.png";
+import logo from "@/assets/info-perso.png";
 import logo2 from "@/assets/logo.png";
-import { Button } from "primereact/button";
-import UploadFile from "@/components/upload-file/UploadFile";
-import RelanceCsv from "@/components/relance-csv/RelanceCsv";
 import AuthenticatedGuard from "@/components/authguard/AuthenticatedGuard";
-import ProtectedPage from "../../components/admin-info/admin-info-prop/page";
 import AdminInformations from "../../components/admin-info/admin-info-prop/page";
 import HistoriqueFilesTable from "@/components/historique-table/HistoriqueFilesTable";
-import CreateParticipantForm from "@/components/createParticipant/CreateParticipantForm";
 
 export default function Consentements() {
   return (

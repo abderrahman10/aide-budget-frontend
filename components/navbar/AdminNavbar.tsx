@@ -9,6 +9,7 @@ import logo from "@/assets/images_logo_light.jpg";
 import Image from 'next/image'; 
 import { useRouter } from 'next/navigation'
 import { usePathname } from "next/navigation"
+import Link from 'next/link';
 
 export default function AdminNavbar ({ image }: { image: string }) {
     const path = usePathname()
@@ -20,6 +21,13 @@ export default function AdminNavbar ({ image }: { image: string }) {
     };
 
     const items: MenuItem[] = [
+         {
+             label: 'Dashboard',
+             icon: 'pi pi-chart-bar',
+             command: () => handleNavigation('/')
+
+          
+         },
         {
             label: 'Gestion-Participant',
             icon: 'pi pi-user',
@@ -31,16 +39,8 @@ export default function AdminNavbar ({ image }: { image: string }) {
             icon: 'pi pi-history',
             command: () => handleNavigation('/historique')
         },
-        // {
-        //     label: 'Projects',
-        //     icon: 'pi pi-search',
-          
-        // },
-        // {
-        //     label: 'Contact',
-        //     icon: 'pi pi-envelope',
-     
-        // },
+
+  
         {
             label: 'Quit',
             icon: 'pi pi-fw pi-sign-out',
@@ -49,7 +49,8 @@ export default function AdminNavbar ({ image }: { image: string }) {
         }
     ];
 
-    const start = <Image alt="logo" src={logo} height="40" className="mr-2"></Image>;
+    const start = (<Link href="/"><Image alt="logo" src={logo} height="40" className="mr-2" />  </Link>  );
+        
     const end = (
         <div className="flex align-items-center gap-2">
             {/* <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png" shape="circle" /> */}

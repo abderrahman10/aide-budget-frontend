@@ -1,6 +1,6 @@
 import Image from "next/image";
 import classes from "./page.module.css";
-import logo from "@/assets/files.png";
+import logo from "@/assets/signature.png";
 import Link from "next/link";
 import CheckBox from "@/components/check-box/CheckBox";
 import "primeicons/primeicons.css";

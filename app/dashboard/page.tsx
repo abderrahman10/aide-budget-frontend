@@ -7,7 +7,7 @@ import AdminInformations from "../../components/admin-info/admin-info-prop/page"
 import CercleChart from "@/components/cerclechart/CercleChart";
 import LineChart from "@/components/line-chart/LineChart";
 
-export default function Consentements() {
+export default function Dashboard() {
   return (
     <AuthenticatedGuard>
       <div className={classes.container}>

@@ -96,7 +96,8 @@ const CreateParticipantForm = () => {
         credentials: "include",
         body: JSON.stringify(formData),
       });
-
+    console.log("thisi si value of session",  JSSESSION?.valueOf)
+    
       if (!response.ok) {
         const responseData = await response.json();
         const errorMessage = responseData.message;
@@ -123,13 +124,13 @@ const CreateParticipantForm = () => {
   return (
     <div className="card flex justify-content-center">
       <Button
-        label="Enregistrer"
+        label="Ajouter un Participant"
         icon="pi pi-pencil"
         onClick={() => setVisible(true)}
       />
       <Toast ref={toast} />
       <Dialog
-        header="ajouter un participant"
+        header="Ajouter un participant"
         visible={visible}
         style={{ width: "50vw" }}
         onHide={() => setVisible(false)}

@@ -1,14 +1,17 @@
 import Image from "next/image";
 import classes from "./page.module.css";
-import logo from "@/assets/files.png";
+import logo from "@/assets/info-perso.png";
 import logo2 from "@/assets/logo.png";
 import Link from "next/link";
 import "primeicons/primeicons.css";
-import UserTable2 from "@/components/user-table/UserTable2";
 import Blog from "@/components/blog/Blog";
 import Cards from "@/components/card/Card";
-import { FindClient, FindParticipant } from "@/components/find-participant/FindParticipant";
+import {
+  FindClient,
+  FindParticipant,
+} from "@/components/find-participant/FindParticipant";
 import AccessDeniedPage from "@/app/access-denied/page";
+import UserInformations from "@/components/user-table/UserInformation";
 
 export default async function UserInformation({
   params,
@@ -18,8 +21,10 @@ export default async function UserInformation({
   const { slug } = params;
   const userInfo = await FindParticipant(params);
   const userToken = userInfo ? userInfo.token : null;
-  const clientInfo=await FindClient(params);
-   const client_consentement= clientInfo ? clientInfo.horodatageConsentement : null ;
+  const clientInfo = await FindClient(params);
+  const client_consentement = clientInfo
+    ? clientInfo.horodatageConsentement
+    : null;
 
   return (
     <div className={classes.container}>
@@ -35,6 +40,7 @@ export default async function UserInformation({
                 height={100}
                 className={classes.fileImg}
               />
+              <UserInformations slug={slug} />
             </div>
           </div>
           <div className={classes.column2}>
@@ -46,10 +52,6 @@ export default async function UserInformation({
               className={classes.logo}
             />
             <div className={classes.secondColumnInfo}>
-              <div className="userInformationTable">
-                <UserTable2 slug={slug} />
-              </div>
-
               <div className={classes.blogCardSection}>
                 <div className="blog">
                   <Blog />
