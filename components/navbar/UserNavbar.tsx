@@ -16,24 +16,7 @@ export default function UserNavbar () {
      return null;
     }
     const items: MenuItem[] = [
-        // {
-        //     label: 'Home',
-        //     icon: 'pi pi-home'
-        // },
-        // {
-        //     label: 'Features',
-        //     icon: 'pi pi-star'
-        // },
-        // {
-        //     label: 'Projects',
-        //     icon: 'pi pi-search',
-          
-        // },
-        // {
-        //     label: 'Contact',
-        //     icon: 'pi pi-envelope',
      
-        // },
       
     ];
 

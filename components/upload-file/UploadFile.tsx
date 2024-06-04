@@ -9,6 +9,7 @@ import { parseCookies } from 'nookies';
 
 
  const UploadFile = () => {
+  const [loading, setLoading] = useState(false);
   const cookies = parseCookies();
   const JSSESSION = cookies.JSESSIONID;
   const toast = useRef<Toast>(null);
@@ -16,7 +17,7 @@ import { parseCookies } from 'nookies';
 
   async function UploadFileForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
+    setLoading(true);
     const formData = new FormData(event.currentTarget);
 
     if (selectedFiles.length > 0) {
@@ -43,18 +44,22 @@ import { parseCookies } from 'nookies';
           const errorMessage = responseData.message;
           throw new Error(errorMessage);
         }
-
-        toast.current?.show({
-          severity: "success",
-          summary: "Success",
-          detail: "Les données ont été enregistré avec succès",
-          life: 3000,
-        });
+        setTimeout(() => {
+          setLoading(false);
+          toast.current?.show({
+            severity: "success",
+            summary: "Success",
+            detail: "Les données ont été enregistré avec succès",
+            life: 3000,
+          });
+      }, 2000);
+       
         // setTimeout(() => {
         //   window.location.reload();
         // }, 3000);
       // 
       } catch (error:any) {
+        setLoading(false);
         toast.current?.show({
           severity: "error",
           summary: "Error",
@@ -78,7 +83,6 @@ import { parseCookies } from 'nookies';
       <form onSubmit={UploadFileForm}>
         <Toast ref={toast} />
         <div className="card flex flex-wrap justify-content-center">
-          {/* <FileUpload name="file" multiple onSelect={(e) => setSelectedFiles(e.files)} accept=".csv" emptyTemplate={<p className="m-0">Drag and drop files to here to upload.</p>} /> */}
           <input
             type="file"
             className={classes.Custumeinputfile}
@@ -87,13 +91,14 @@ import { parseCookies } from 'nookies';
             multiple
             accept=".csv"
             onChange={(e) => setSelectedFiles(e.target.files ? Array.from(e.target.files) : [])}
+           
           />
         </div>
        
         <div className="card flex flex-wrap justify-content-center gap-3">
-            <Button label="Importer" type="submit"  icon="pi pi-file-arrow-up" />
+            <Button label="Importer" type="submit" loading={loading} icon="pi pi-file-arrow-up" />
          </div>   
-      </form>
+         </form>
 
     </div>
   );

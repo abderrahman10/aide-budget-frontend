@@ -1,10 +1,17 @@
+import { parseCookies } from 'nookies';
+
+
 export async function GetParticipantsStatistics() {
+    const cookies = parseCookies();
+    const JSSESSION = cookies.JSESSIONID;
+  
     try {
-        const response = await fetch('http://localhost:8081/api/v1/client/count-by-month', {
+        const response = await fetch('http://localhost:8081/api/v1/participant/count-by-month', {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
-            },
+                Cookie: `JSESSIONID=${JSSESSION?.valueOf}`,
+              },
+              credentials: "include",
         });
 
         if (!response.ok) {

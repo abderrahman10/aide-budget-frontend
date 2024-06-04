@@ -39,9 +39,8 @@ export default function Consentements() {
               <b>Gestion des consentements</b>
             </h4>
             <p>
-              Pour consulter les dernières exportations de consentements ou de
-              retraits de consentements, veuillez vous référer au tableau
-              ci-dessous :
+            Pour consulter les fichiers importés ,  veuillez vous référer au tableau ci-dessous 
+      
             </p>
 
             <div className={classes.tableElement}>

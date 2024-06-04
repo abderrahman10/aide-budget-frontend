@@ -11,8 +11,8 @@ export default function OtpDialog({ slug }: { slug: string }) {
 
   const [visible, setVisible] = useState<boolean>(false);
   const token = slug;
-
-  const SendEmailWithOtpCodeHandler = async () => {
+    async function SendEmailWithOtpCodeHandler() {
+  
     try {
       const url = `http://localhost:8081/api/v1/participants/email/sendEmailWithOtp/${token}`;
       const response = await fetch(url, {
@@ -28,7 +28,7 @@ export default function OtpDialog({ slug }: { slug: string }) {
         toast.current?.show({
           severity: "success",
           summary: "Success",
-          detail: "Mail avec le code a été  envoyé avec succès",
+          detail: "Mail avec le code OTP a été  envoyé avec succès",
           life: 3000,
         });
       } else {

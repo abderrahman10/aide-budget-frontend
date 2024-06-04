@@ -10,6 +10,8 @@ import { parseCookies } from 'nookies';
 
 
 const CreateParticipantForm = () => {
+  const [loading, setLoading] = useState(false);
+
   const cookies = parseCookies();
   const JSSESSION = cookies.JSESSIONID;
   const toast = useRef<Toast>(null);
@@ -73,7 +75,7 @@ const CreateParticipantForm = () => {
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFormSubmitted(true);
-
+  
     const formIsValid = Object.values(formData).every((value) => value !== "");
 
     if (!formIsValid) {
@@ -85,6 +87,7 @@ const CreateParticipantForm = () => {
       });
       return;
     }
+    setLoading(true)
     try {
       const url = "http://localhost:8081/api/v1/admin";
       const response = await fetch(url, {
@@ -96,7 +99,7 @@ const CreateParticipantForm = () => {
         credentials: "include",
         body: JSON.stringify(formData),
       });
-    console.log("thisi si value of session",  JSSESSION?.valueOf)
+
     
       if (!response.ok) {
         const responseData = await response.json();
@@ -104,14 +107,20 @@ const CreateParticipantForm = () => {
         throw new Error(errorMessage);
       }
 
-      toast.current?.show({
-        severity: "success",
-        summary: "Success",
-        detail: "Les données ont été enregistrées avec succès",
-        life: 3000,
-      });
-      setVisible(false);
+      setTimeout(() => {
+        setLoading(false);
+        toast.current?.show({
+          severity: "success",
+          summary: "Success",
+          detail: "Les données ont été enregistrées avec succès",
+          life: 3000,
+        }); 
+         setVisible(false);
+    }, 2000);
+    
+      
     } catch (error: any) {
+      setLoading(false);
       toast.current?.show({
         severity: "error",
         summary: "Error",
@@ -254,7 +263,7 @@ const CreateParticipantForm = () => {
                     id="civilite"
                     type="text"
                     name="civilite"
-                    placeholder="civilite"
+                    placeholder="civilité"
                     tooltip="Civilité"
                     tooltipOptions={{ event: 'both' ,position: 'bottom'}}
                     value={formData.civilite}
@@ -269,7 +278,7 @@ const CreateParticipantForm = () => {
           </div>
 
           <div className="card flex justify-content-center">
-            <Button type="submit" label="Enregistrer" />
+            <Button type="submit" label="Enregistrer" loading={loading} />
           </div>
         </form>
       </Dialog>

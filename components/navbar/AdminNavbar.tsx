@@ -48,7 +48,6 @@ export default function AdminNavbar ({ image }: { image: string }) {
 
         }
     ];
-
     const start = (<Link href="/"><Image alt="logo" src={logo} height="40" className="mr-2" />  </Link>  );
         
     const end = (

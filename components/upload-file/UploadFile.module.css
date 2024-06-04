@@ -2,15 +2,15 @@
     margin-top: 20px; 
   }
   .Custumeinputfile{
-font-size: 16px;
-background: white;
-border-radius: 50px;
-box-shadow: 5px 5px 10px black;
-width: 100%;
-outline: none;
-margin-bottom: 20px; 
-
-  }
+    font-size: 16px;
+    background: white;
+    border-radius: 50px;
+    border: 1px solid black; /* ajout de la bordure noire */
+    /* box-shadow: 5px 5px 10px black; */
+    width: 100%;
+    outline: none;
+    margin-bottom: 20px; 
+}
   .Custumeinputfile::-webkit-file-upload-button{
  color: white;
  background: linear-gradient(135deg, #1058C7, #0F58C9);
