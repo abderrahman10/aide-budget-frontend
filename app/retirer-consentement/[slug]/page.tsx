@@ -19,10 +19,10 @@ export default async function UserInformation({
 }) {
   const { slug } = params;
 
-  const userInfo = await FindParticipant(params)
-const userToken = userInfo ? userInfo.token : null;
+
 const clientInfo = await FindClient(params)
 const client_consentement = clientInfo ? clientInfo.horodatageConsentement : null;
+const userToken = clientInfo ? clientInfo.token : null;
 return (
   <div className={classes.container}>
     {userToken && client_consentement ? (
